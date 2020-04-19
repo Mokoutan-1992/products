@@ -1,13 +1,18 @@
+import os #oprating system
 # 读取档案
 products = []
-with open('products.csv', 'r', encoding='utf-8') as f:
-    for line in f:
-        if '商品名,价格' in line：
-            continue #跳过接下来的loop内容 回到forloop起点
-        name, price = line.strip().split(',')
-        products.append([name , price])
-print(products)
 
+if os.path.isfile('products.csv'):
+    with open('products.csv', 'r', encoding='utf-8') as f:
+        for line in f:
+            if '商品名,价格' in line:
+                continue #跳过接下来的loop内容 回到forloop起点
+            name, price = line.strip().split(',')
+            products.append([name , price])
+    print(products)
+    print('找到文件"products.csv"')
+else:
+    print('找不到文件"products.csv"')
 
 #让用户输入
 while True:
